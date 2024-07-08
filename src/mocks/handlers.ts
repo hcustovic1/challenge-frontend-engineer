@@ -1,5 +1,8 @@
 import { http, HttpResponse } from 'msw';
-import orders from './data/orders.json';
+import ordersJson from './data/orders.json';
+import { Order } from '../types/Orders';
+
+const orders: Order[] = ordersJson as Order[];
 
 export const handlers = [
   http.get(
@@ -8,12 +11,12 @@ export const handlers = [
       const url = new URL(request.url);
       const zipCode = url.searchParams.get('zip');
 
-      const order = orders.find(
-        (o) => o._id === orderNumber && o.zip_code === zipCode
+      const requestedOrder = orders.find(
+        (order) => order._id === orderNumber && order.zip_code === zipCode
       );
 
-      if (order) {
-        return HttpResponse.json(order, {
+      if (requestedOrder) {
+        return HttpResponse.json(requestedOrder, {
           status: 200,
           statusText: 'OK',
         });
