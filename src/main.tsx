@@ -1,18 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
 import './styles/theme.css';
 import { worker } from './mocks/browser.ts';
 
 // Start the mocking service worker for orders API
-if (process.env.NODE_ENV === 'development') {
-  worker.start({
-    onUnhandledRequest: 'bypass',
-  });
+async function prepare() {
+  if (process.env.NODE_ENV === 'development') {
+    await worker.start({
+      onUnhandledRequest: 'bypass',
+    });
+  }
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+prepare().then(() => {
+  import('./App').then(({ default: App }) => {
+    ReactDOM.createRoot(document.getElementById('root')!).render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
+  });
+});
