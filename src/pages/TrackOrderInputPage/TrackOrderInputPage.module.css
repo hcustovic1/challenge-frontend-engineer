@@ -1,0 +1,54 @@
+.signIn {
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    padding: var(--spacing-lg);
+    border-radius: var(--input-border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .inputGroup {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  input {
+    width: 100%;
+    padding: var(--input-padding);
+    font-size: var(--input-font-size);
+    border: 1px solid var(--color-on-surface);
+    border-radius: var(--input-border-radius);
+    box-sizing: border-box;
+  }
+  
+  .error {
+    color: var(--color-error);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-sm);
+  }
+  
+  button {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    font-size: var(--button-font-size);
+    padding: var(--button-padding);
+    border: none;
+    border-radius: var(--button-border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: var(--color-primary-variant);
+  }
