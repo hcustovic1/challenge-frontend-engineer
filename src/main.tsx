@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
-import './index.css';
+import './styles/theme.css';
 import { worker } from './mocks/browser.ts';
 
+// Start the mocking service worker for orders API
 if (process.env.NODE_ENV === 'development') {
   worker.start({
     onUnhandledRequest: 'bypass',
