@@ -1,3 +1,5 @@
+// Types specific to orders domain
+
 export interface Article {
   articleNo: string;
   articleName: string;
