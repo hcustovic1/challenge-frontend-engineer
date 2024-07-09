@@ -41,6 +41,7 @@ export const TrackOrderInputForm: React.FC<TrackOrderInputFormProps> = ({
             Please enter your order number.
           </p>
         </div>
+
         <div className={styles.inputGroup}>
           <label htmlFor="zipCode">Zip Code</label>
           <input
@@ -57,6 +58,7 @@ export const TrackOrderInputForm: React.FC<TrackOrderInputFormProps> = ({
             Please enter your zip code.
           </p>
         </div>
+
         <button type="submit">Submit</button>
       </form>
     </section>

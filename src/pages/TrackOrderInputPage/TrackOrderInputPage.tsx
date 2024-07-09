@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './TrackOrderInputPage.module.css';
 import { useFetchOrder } from '../../hooks/useFetchOrder';
-import { TrackOrderInputForm } from '../../components';
+import { ErrorBanner, TrackOrderInputForm } from '../../components';
 import { useOrderContext } from '../../context/OrderContext';
 
 export const TrackOrderInputPage: React.FC = () => {
@@ -32,11 +32,11 @@ export const TrackOrderInputPage: React.FC = () => {
 
       {isLoading && <p>Loading...</p>}
 
-      {error && (
-        <p className={styles.error} role="alert">
-          {error}
-        </p>
-      )}
+      <div
+        className={`${styles.errorContainer} ${error ? styles.showError : ''}`}
+      >
+        <ErrorBanner message={error || ''} />
+      </div>
     </div>
   );
 };
