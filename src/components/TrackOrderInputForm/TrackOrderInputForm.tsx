@@ -1,66 +1,100 @@
-import { useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import styles from './TrackOrderInputForm.module.css';
 
 interface TrackOrderInputFormProps {
   heading: string;
   description?: string;
   onSubmit: (orderNumber: string, zipCode: string) => void;
+  onInputChange: () => void;
 }
 
-export const TrackOrderInputForm: React.FC<TrackOrderInputFormProps> = ({
+const TrackOrderInputForm: React.FC<TrackOrderInputFormProps> = ({
   heading,
   description,
   onSubmit,
+  onInputChange,
 }) => {
+  const [isFormValid, setIsFormValid] = useState(false);
   const [orderNumber, setOrderNumber] = useState('');
   const [zipCode, setZipCode] = useState('');
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    onSubmit(orderNumber, zipCode);
-  };
+  const handleOrderNumberChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setOrderNumber(e.target.value);
+      onInputChange();
+    },
+    [onInputChange]
+  );
+
+  const handleZipCodeChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setZipCode(e.target.value);
+      onInputChange();
+    },
+    [onInputChange]
+  );
+
+  const handleSubmit = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      onSubmit(orderNumber, zipCode);
+    },
+    [onSubmit, orderNumber, zipCode]
+  );
+
+  useEffect(() => {
+    setIsFormValid(orderNumber.trim() !== '' && zipCode.trim() !== '');
+  }, [orderNumber, zipCode]);
 
   return (
     <section className={styles.signIn} aria-labelledby="signInHeading">
-      <h2 id="signInHeading">{heading}</h2>
-      {description && <p>{description}</p>}
-      <form onSubmit={handleSubmit}>
+      <h2 id="signInHeading" className={styles.heading}>
+        {heading}
+      </h2>
+
+      {description && <p className={styles.description}>{description}</p>}
+
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputGroup}>
-          <label htmlFor="orderNumber">Order Number</label>
+          <label htmlFor="orderNumber" className={styles.label}>
+            Order Number
+          </label>
           <input
             id="orderNumber"
             name="orderNumber"
             type="text"
             value={orderNumber}
-            onChange={(e) => setOrderNumber(e.target.value)}
+            onChange={handleOrderNumberChange}
             required
             aria-required="true"
             aria-describedby="orderNumberDescription"
+            className={styles.input}
           />
-          <p id="orderNumberDescription" className={styles.srOnly}>
-            Please enter your order number.
-          </p>
         </div>
 
         <div className={styles.inputGroup}>
-          <label htmlFor="zipCode">Zip Code</label>
+          <label htmlFor="zipCode" className={styles.label}>
+            Zip Code
+          </label>
           <input
             id="zipCode"
             name="zipCode"
             type="text"
             value={zipCode}
-            onChange={(e) => setZipCode(e.target.value)}
+            onChange={handleZipCodeChange}
             required
             aria-required="true"
             aria-describedby="zipCodeDescription"
+            className={styles.input}
           />
-          <p id="zipCodeDescription" className={styles.srOnly}>
-            Please enter your zip code.
-          </p>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" className={styles.button} disabled={!isFormValid}>
+          Submit
+        </button>
       </form>
     </section>
   );
 };
+
+export const MemoizedTrackOrderInputForm = memo(TrackOrderInputForm);

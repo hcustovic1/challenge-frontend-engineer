@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './TrackOrderInputPage.module.css';
 import { useFetchOrder } from '../../hooks/useFetchOrder';
@@ -7,15 +7,21 @@ import { useOrderContext } from '../../context/OrderContext';
 import { Loading } from '../../components/Loading/Loading';
 
 export const TrackOrderInputPage: React.FC = () => {
-  const { fetchOrderData, order, isLoading, error } = useFetchOrder();
+  const {
+    fetchOrderData,
+    fetchedOrder,
+    isLoadingOrderData,
+    fetchOrderDataError,
+    setFetchOrderDataError,
+  } = useFetchOrder();
   const { setOrder: setOrderContext, order: contextOrder } = useOrderContext();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (order) {
-      setOrderContext(order);
+    if (fetchedOrder) {
+      setOrderContext(fetchedOrder);
     }
-  }, [order, setOrderContext]);
+  }, [fetchedOrder, setOrderContext]);
 
   useEffect(() => {
     if (contextOrder) {
@@ -23,22 +29,29 @@ export const TrackOrderInputPage: React.FC = () => {
     }
   }, [contextOrder, navigate]);
 
+  const resetFetchOrderDataError = useCallback(() => {
+    setFetchOrderDataError(null);
+  }, [setFetchOrderDataError]);
+
   return (
     <div className={styles.trackOrderPage}>
-      {!isLoading && (
+      {!isLoadingOrderData && (
         <TrackOrderInputForm
           heading="Track Your Order"
           description="Please enter your order number and zip code to track your order."
           onSubmit={fetchOrderData}
+          onInputChange={resetFetchOrderDataError}
         />
       )}
 
-      {isLoading && <Loading />}
+      {isLoadingOrderData && <Loading />}
 
       <div
-        className={`${styles.errorContainer} ${error ? styles.showError : ''}`}
+        className={`${styles.errorContainer} ${
+          fetchOrderDataError ? styles.showError : ''
+        }`}
       >
-        <ErrorBanner message={error || ''} />
+        <ErrorBanner message={fetchOrderDataError || ''} />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-export { TrackOrderInputForm } from './TrackOrderInputForm/TrackOrderInputForm';
+export { MemoizedTrackOrderInputForm as TrackOrderInputForm } from './TrackOrderInputForm/TrackOrderInputForm';
 export { Articles } from './Articles/Articles';
 export { Checkpoints } from './Checkpoints/Checkpoints';
 export { OrderInformation } from './OrderInformation/OrderInformation';

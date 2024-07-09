@@ -3,10 +3,11 @@ import { Order } from '../types';
 import { fetchOrder } from '../api/fetchOrder';
 
 interface UseFetchOrderReturn {
-  order: Order | null;
-  error: string | null;
-  isLoading: boolean;
+  fetchedOrder: Order | null;
+  fetchOrderDataError: string | null;
+  isLoadingOrderData: boolean;
   fetchOrderData: (orderNumber: string, zipCode: string) => void;
+  setFetchOrderDataError: (error: string | null) => void;
 }
 
 export const useFetchOrder = (): UseFetchOrderReturn => {
@@ -31,5 +32,11 @@ export const useFetchOrder = (): UseFetchOrderReturn => {
     []
   );
 
-  return { order, error, isLoading, fetchOrderData };
+  return {
+    fetchedOrder: order,
+    fetchOrderDataError: error,
+    isLoadingOrderData: isLoading,
+    fetchOrderData,
+    setFetchOrderDataError: setError,
+  };
 };
