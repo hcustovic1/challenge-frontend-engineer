@@ -16,7 +16,12 @@ export const OrderDetailsPage: React.FC = () => {
     zipCode: string;
   }>();
   const { order: contextOrder, setOrder: setContextOrder } = useOrderContext();
-  const { fetchOrderData, order, isLoading, error } = useFetchOrder();
+  const {
+    fetchOrderData,
+    fetchedOrder,
+    isLoadingOrderData,
+    fetchOrderDataError,
+  } = useFetchOrder();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,19 +33,19 @@ export const OrderDetailsPage: React.FC = () => {
   }, [orderNumber, zipCode, fetchOrderData, contextOrder, navigate]);
 
   useEffect(() => {
-    if (order && !contextOrder) {
-      setContextOrder(order);
+    if (fetchedOrder && !contextOrder) {
+      setContextOrder(fetchedOrder);
     }
-  }, [order, contextOrder, setContextOrder]);
+  }, [fetchedOrder, contextOrder, setContextOrder]);
 
-  if (isLoading) {
+  if (isLoadingOrderData) {
     return <p>Loading...</p>;
   }
 
-  if (error) {
+  if (fetchOrderDataError) {
     return (
       <p className={styles.error} role="alert">
-        {error}
+        {fetchOrderDataError}
       </p>
     );
   }

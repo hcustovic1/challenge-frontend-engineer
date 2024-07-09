@@ -19,7 +19,9 @@ export const fetchOrder = async ({
   );
 
   if (!response.ok) {
-    throw new Error('Failed to fetch the requested order!');
+    throw new Error(
+      'Order not found. Please check the order number and zip code and try again.'
+    );
   }
 
   return response.json();
