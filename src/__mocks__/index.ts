@@ -1,4 +1,4 @@
-import { Article, Order } from '../types';
+import { Article, Checkpoint, DeliveryInfo, Order } from '../types';
 
 export const mockOrder: Order = {
   _id: '1',
@@ -42,10 +42,56 @@ export const mockOrder: Order = {
   zip_code: '60156',
 };
 
-export const mockArticle: Article = {
+export const mockArticleA: Article = {
   articleNo: '12345',
-  articleName: 'Sample Article',
+  articleName: 'Sample Article 1',
   articleImageUrl: '',
   quantity: 2,
   price: 29.99,
+};
+
+export const mockArticleB: Article = {
+  articleNo: '67890',
+  articleName: 'Sample Article 2',
+  articleImageUrl: 'https://example.com/image2.jpg',
+  quantity: 1,
+  price: 59.99,
+};
+
+export const mockArticles: Article[] = [mockArticleA, mockArticleB];
+
+export const mockCheckpointA: Checkpoint = {
+  status: 'Delivered',
+  status_details: 'Your package has been delivered',
+  event_timestamp: '2023-07-07T12:34:56Z',
+  city: 'Munich',
+  country_iso3: 'DEU',
+  meta: {
+    pickup_address: '123 Main St',
+    pickup_address_link: 'https://www.google.com/maps',
+  },
+};
+
+export const mockCheckpointB: Checkpoint = {
+  status: 'In Transit',
+  status_details: 'Your package is on the way',
+  event_timestamp: '2023-07-06T10:20:30Z',
+  city: 'Berlin',
+  country_iso3: 'DEU',
+};
+
+export const mockCheckpoints: Checkpoint[] = [mockCheckpointA, mockCheckpointB];
+
+export const mockDeliveryInfo: DeliveryInfo = {
+  orderNo: '12345',
+  order_date: '2023-07-07',
+  recipient: 'John Doe',
+  street: '123 Main St',
+  city: 'Munich',
+  region: 'Bavaria',
+  announced_delivery_date: '2023-07-10',
+  articles: [],
+  email: '',
+  recipient_notification: '',
+  timezone: 'Europe/Berlin',
 };

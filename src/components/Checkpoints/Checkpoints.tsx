@@ -1,19 +1,6 @@
+import { Checkpoint } from '../../types';
 import { Checkpoint as CheckpointComponent } from '../Checkpoint/Checkpoint';
 import styles from './Checkpoints.module.css';
-
-interface CheckpointMeta {
-  pickup_address?: string;
-  pickup_address_link?: string;
-}
-
-interface Checkpoint {
-  status: string;
-  status_details: string;
-  event_timestamp: string;
-  city: string;
-  country_iso3: string;
-  meta?: CheckpointMeta;
-}
 
 interface CheckpointsProps {
   checkpoints: Checkpoint[];

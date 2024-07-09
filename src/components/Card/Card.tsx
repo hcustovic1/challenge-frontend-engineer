@@ -8,12 +8,14 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ children, title }) => {
   return (
-    <div className={styles.card}>
-      <div className={styles.cardHeader}>
-        <h2 className={styles.cardTitle}>{title}</h2>
-      </div>
-      <div className={styles.separator}></div>
+    <section className={styles.card} aria-labelledby="cardTitle">
+      <header className={styles.cardHeader}>
+        <h2 id="cardTitle" className={styles.cardTitle}>
+          {title}
+        </h2>
+      </header>
+      <hr className={styles.separator} />
       <div className={styles.cardContent}>{children}</div>
-    </div>
+    </section>
   );
 };

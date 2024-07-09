@@ -1,4 +1,5 @@
 import { DeliveryInfo } from '../../types';
+import styles from './OrderInformation.module.css';
 
 interface OrderInformationProps {
   deliveryInfo: DeliveryInfo;
@@ -19,21 +20,33 @@ export const OrderInformation: React.FC<OrderInformationProps> = ({
   country,
   zipCode,
 }) => (
-  <section>
-    <p>
-      <strong>Order Number:</strong> {orderNo}
-    </p>
-    <p>
-      <strong>Order Date:</strong> {order_date}
-    </p>
-    <p>
-      <strong>Recipient:</strong> {recipient}
-    </p>
-    <p>
-      <strong>Address:</strong> {street}, {city}, {region}, {country}, {zipCode}
-    </p>
-    <p>
-      <strong>Announced Delivery Date:</strong> {announced_delivery_date}
-    </p>
+  <section
+    className={styles.orderInformation}
+    aria-labelledby="order-information-heading"
+  >
+    <dl>
+      <div className={styles.detailItem}>
+        <dt>Order Number:</dt>
+        <dd>{orderNo}</dd>
+      </div>
+      <div className={styles.detailItem}>
+        <dt>Order Date:</dt>
+        <dd>{order_date}</dd>
+      </div>
+      <div className={styles.detailItem}>
+        <dt>Recipient:</dt>
+        <dd>{recipient}</dd>
+      </div>
+      <div className={styles.detailItem}>
+        <dt>Address:</dt>
+        <dd>
+          {street}, {city}, {region}, {country}, {zipCode}
+        </dd>
+      </div>
+      <div className={styles.detailItem}>
+        <dt>Announced Delivery Date:</dt>
+        <dd>{announced_delivery_date}</dd>
+      </div>
+    </dl>
   </section>
 );

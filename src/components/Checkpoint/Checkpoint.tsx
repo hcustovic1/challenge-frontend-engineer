@@ -1,19 +1,8 @@
+import { Checkpoint as CheckpointType } from '../../types';
 import styles from './Checkpoint.module.css';
 
-interface CheckpointMeta {
-  pickup_address?: string;
-  pickup_address_link?: string;
-}
-
 interface CheckpointProps {
-  checkpoint: {
-    status: string;
-    status_details: string;
-    event_timestamp: string;
-    city: string;
-    country_iso3: string;
-    meta?: CheckpointMeta;
-  };
+  checkpoint: CheckpointType;
   isLatest: boolean;
 }
 
@@ -21,23 +10,29 @@ export const Checkpoint: React.FC<CheckpointProps> = ({
   checkpoint,
   isLatest,
 }) => (
-  <div
+  <article
     className={`${styles.checkpoint} ${
       isLatest ? styles.latestCheckpoint : ''
     }`}
+    aria-labelledby={`status-${checkpoint.event_timestamp}`}
   >
-    <strong>{checkpoint.status}</strong>
+    <header>
+      <h3 id={`status-${checkpoint.event_timestamp}`}>{checkpoint.status}</h3>
+    </header>
     <p>{checkpoint.status_details}</p>
     <p>
-      <strong>Timestamp:</strong>{' '}
-      {new Date(checkpoint.event_timestamp).toLocaleString()}
+      <time dateTime={checkpoint.event_timestamp}>
+        {new Date(checkpoint.event_timestamp).toLocaleString()}
+      </time>
     </p>
     <p>
-      <strong>Location:</strong> {checkpoint.city}, {checkpoint.country_iso3}
+      <span>
+        {checkpoint.city}, {checkpoint.country_iso3}
+      </span>
     </p>
     {checkpoint.meta?.pickup_address && (
       <p>
-        <strong>Pickup Address:</strong> {checkpoint.meta.pickup_address}
+        <span>Pickup Address: {checkpoint.meta.pickup_address}</span>
       </p>
     )}
     {checkpoint.meta?.pickup_address_link && (
@@ -51,5 +46,5 @@ export const Checkpoint: React.FC<CheckpointProps> = ({
         </a>
       </p>
     )}
-  </div>
+  </article>
 );

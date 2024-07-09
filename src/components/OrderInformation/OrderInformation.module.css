@@ -1,0 +1,27 @@
+.orderInformation {
+    padding: var(--spacing-md);
+    background-color: var(--color-surface);
+    border-radius: var(--button-border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  dl {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-xs);
+  }
+  
+  .detailItem {
+    display: contents;
+  }
+  
+  dt {
+    font-weight: bold;
+    color: var(--color-on-surface);
+  }
+  
+  dd {
+    margin: 0;
+    color: var(--color-on-surface);
+  }
