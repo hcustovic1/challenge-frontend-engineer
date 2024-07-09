@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useOrderContext } from '../../context/OrderContext';
 import styles from './OrderDetailsPage.module.css';
-import { useFetchOrder } from '../../hooks/useFetchOrder';
+import { useFetchOrder } from '../../hooks';
 import {
   Articles,
   Checkpoints,
