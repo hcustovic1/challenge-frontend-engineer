@@ -1,7 +1,11 @@
 .appBackground {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: linear-gradient(
+    135deg,
+    var(--color-surface) 0%,
+    var(--color-primary-variant) 100%
+  );
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
