@@ -1,4 +1,3 @@
-import React from 'react';
 import { Checkpoint as CheckpointComponent } from '../Checkpoint/Checkpoint';
 import styles from './Checkpoints.module.css';
 

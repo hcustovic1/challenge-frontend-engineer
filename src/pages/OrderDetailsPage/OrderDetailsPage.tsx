@@ -8,6 +8,8 @@ import {
   Checkpoints,
   OrderInformation,
   Card,
+  Loading,
+  ErrorBanner,
 } from '../../components';
 
 export const OrderDetailsPage: React.FC = () => {
@@ -39,19 +41,15 @@ export const OrderDetailsPage: React.FC = () => {
   }, [fetchedOrder, contextOrder, setContextOrder]);
 
   if (isLoadingOrderData) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   if (fetchOrderDataError) {
-    return (
-      <p className={styles.error} role="alert">
-        {fetchOrderDataError}
-      </p>
-    );
+    return <ErrorBanner message={fetchOrderDataError} />;
   }
 
   if (!contextOrder) {
-    return <p>No order data available.</p>;
+    return <ErrorBanner message={'No order data available.'} />;
   }
 
   return (

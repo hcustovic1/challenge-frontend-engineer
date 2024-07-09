@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Article.module.css';
 import { Article as ArticleType } from '../../types';
 import placeholderImage from '../../assets/no-image-placeholder.jpg';

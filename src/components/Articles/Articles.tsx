@@ -1,4 +1,3 @@
-import React from 'react';
 import { Article as ArticleComponent } from '../Article/Article';
 import { Article } from '../../types';
 

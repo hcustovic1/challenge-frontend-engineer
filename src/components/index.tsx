@@ -1,5 +1,7 @@
 export { MemoizedTrackOrderInputForm as TrackOrderInputForm } from './TrackOrderInputForm/TrackOrderInputForm';
+export { Article } from './Article/Article';
 export { Articles } from './Articles/Articles';
+export { Checkpoint } from './Checkpoint/Checkpoint';
 export { Checkpoints } from './Checkpoints/Checkpoints';
 export { OrderInformation } from './OrderInformation/OrderInformation';
 export { ErrorBanner } from './ErrorBanner/ErrorBanner';
