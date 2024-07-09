@@ -4,6 +4,7 @@ import styles from './TrackOrderInputPage.module.css';
 import { useFetchOrder } from '../../hooks/useFetchOrder';
 import { ErrorBanner, TrackOrderInputForm } from '../../components';
 import { useOrderContext } from '../../context/OrderContext';
+import { Loading } from '../../components/Loading/Loading';
 
 export const TrackOrderInputPage: React.FC = () => {
   const { fetchOrderData, order, isLoading, error } = useFetchOrder();
@@ -24,13 +25,15 @@ export const TrackOrderInputPage: React.FC = () => {
 
   return (
     <div className={styles.trackOrderPage}>
-      <TrackOrderInputForm
-        heading="Track Your Order"
-        description="Please enter your order number and zip code to track your order."
-        onSubmit={fetchOrderData}
-      />
+      {!isLoading && (
+        <TrackOrderInputForm
+          heading="Track Your Order"
+          description="Please enter your order number and zip code to track your order."
+          onSubmit={fetchOrderData}
+        />
+      )}
 
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loading />}
 
       <div
         className={`${styles.errorContainer} ${error ? styles.showError : ''}`}
