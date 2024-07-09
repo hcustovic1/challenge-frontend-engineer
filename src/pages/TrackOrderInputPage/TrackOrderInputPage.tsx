@@ -1,9 +1,11 @@
 import { useCallback } from 'react';
 import styles from './TrackOrderInputPage.module.css';
-import { useFetchOrder, useResetError } from '../../hooks';
-import { ErrorBanner, TrackOrderInputForm } from '../../components';
-import { Loading } from '../../components/Loading/Loading';
-import { useNavigateAfterOrderFetch } from '../../hooks';
+import {
+  useFetchOrder,
+  useResetError,
+  useNavigateAfterOrderFetch,
+} from '../../hooks';
+import { ErrorBanner, TrackOrderInputForm, Loading } from '../../components';
 
 export const TrackOrderInputPage: React.FC = () => {
   const {

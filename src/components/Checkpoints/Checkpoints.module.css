@@ -1,0 +1,37 @@
+.checkpoints {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .checkpoint {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-on-surface);
+    border-radius: var(--button-border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .checkpoint:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .latestCheckpoint {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+  
+  .latestCheckpoint strong,
+  .latestCheckpoint p {
+    color: var(--color-on-primary);
+  }
+  
+  .latestCheckpoint a {
+    color: var(--color-on-secondary);
+  }
+  
+  .latestCheckpoint a:hover {
+    color: var(--color-on-primary);
+    text-decoration: underline;
+  }

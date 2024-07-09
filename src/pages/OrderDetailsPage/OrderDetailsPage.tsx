@@ -7,7 +7,7 @@ import {
   Articles,
   Checkpoints,
   OrderInformation,
-  TrackingInformation,
+  Card,
 } from '../../components';
 
 export const OrderDetailsPage: React.FC = () => {
@@ -54,31 +54,33 @@ export const OrderDetailsPage: React.FC = () => {
     return <p>No order data available.</p>;
   }
 
-  const latestCheckpoint = contextOrder.checkpoints[0]; // Assuming the first checkpoint is the latest
-
   return (
     <div className={styles.orderDetails}>
-      <h1>Order Details</h1>
-      <TrackingInformation
-        trackingNumber={contextOrder.tracking_number}
-        courier={contextOrder.courier}
-        currentStatus={latestCheckpoint.status}
-      />
-      <OrderInformation
-        orderNo={contextOrder.delivery_info.orderNo}
-        orderDate={contextOrder.delivery_info.order_date}
-        recipient={contextOrder.delivery_info.recipient}
-        street={contextOrder.delivery_info.street}
-        city={contextOrder.delivery_info.city}
-        region={contextOrder.delivery_info.region}
-        country={contextOrder.destination_country_iso3}
-        zipCode={contextOrder.zip_code}
-        announcedDeliveryDate={
-          contextOrder.delivery_info.announced_delivery_date
-        }
-      />
-      <Articles articles={contextOrder.delivery_info.articles} />
-      <Checkpoints checkpoints={contextOrder.checkpoints} />
+      <Card title="Status">
+        <Checkpoints
+          checkpoints={contextOrder.checkpoints.slice(0, 1)}
+          highlightLatestCheckpoint={true}
+        />
+      </Card>
+
+      <Card title="Articles">
+        <Articles articles={contextOrder.delivery_info.articles} />
+      </Card>
+
+      <Card title="Order Information">
+        <OrderInformation
+          deliveryInfo={contextOrder.delivery_info}
+          country={contextOrder.destination_country_iso3}
+          zipCode={contextOrder.zip_code}
+        />
+      </Card>
+
+      <Card title="History">
+        <Checkpoints
+          checkpoints={contextOrder.checkpoints.slice(1)}
+          highlightLatestCheckpoint={false}
+        />
+      </Card>
     </div>
   );
 };

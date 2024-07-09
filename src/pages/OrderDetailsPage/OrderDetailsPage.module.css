@@ -1,32 +1,29 @@
 .orderDetails {
-    width: 80%;
-    padding: 20px;
+  display: grid;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  grid-template-columns: 1fr;
+  width: 80%;
+}
+
+@media (min-width: 768px) {
+  .orderDetails {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .orderDetails h1,
-  .orderDetails h2 {
-    margin-bottom: 10px;
+}
+
+@media (min-width: 1024px) {
+  .orderDetails {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .orderDetails section {
-    margin-bottom: 20px;
-  }
-  
-  .article img {
-    max-width: 100px;
-    margin-right: 10px;
-  }
-  
-  .article {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .checkpoint {
-    margin-bottom: 10px;
-  }
-  
-  .checkpoint p {
-    margin: 5px 0;
-  }
+}
+
+.orderDetails > div {
+  height: 100%; /* Ensure each grid item takes full height */
+}
+
+.error {
+  color: var(--color-error-text);
+  font-size: var(--font-size-md);
+  margin: var(--spacing-md);
+}

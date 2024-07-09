@@ -2,7 +2,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { OrderRoutes } from './routes/OrderRoutes';
 import { OrderProvider } from './context/OrderContext';
 import styles from './App.module.css';
-import { Navbar } from './components/Navbar/Navbar';
+import { Navbar } from './components';
 
 function App() {
   return (

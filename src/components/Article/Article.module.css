@@ -1,0 +1,28 @@
+.article {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    background-color: var(--color-surface);
+    border-radius: var(--button-border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .articleImage {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--button-border-radius);
+    margin-right: var(--spacing-md);
+  }
+  
+  .articleDetails {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .articleText {
+    margin: var(--spacing-xs);
+    color: var(--color-on-surface);
+    font-size: var(--font-size-md);
+  }
