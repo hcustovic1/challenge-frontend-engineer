@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/theme.css';
-import { worker } from './mocks/browser.ts';
+import { worker } from './mocks/browser';
 
 // Start the mocking service worker for orders API
 async function prepare() {
