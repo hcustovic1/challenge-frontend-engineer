@@ -1,4 +1,4 @@
-import { Order } from '../types';
+import { Article, Order } from '../types';
 
 export const mockOrder: Order = {
   _id: '1',
@@ -40,4 +40,12 @@ export const mockOrder: Order = {
   },
   destination_country_iso3: 'USA',
   zip_code: '60156',
+};
+
+export const mockArticle: Article = {
+  articleNo: '12345',
+  articleName: 'Sample Article',
+  articleImageUrl: '',
+  quantity: 2,
+  price: 29.99,
 };

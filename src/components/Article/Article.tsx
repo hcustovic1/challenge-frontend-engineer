@@ -10,21 +10,24 @@ export const Article: React.FC<ArticleProps> = ({ article }) => {
   const imageUrl = article.articleImageUrl || placeholderImage;
 
   return (
-    <div className={styles.article}>
+    <article className={styles.article}>
       <img
         src={imageUrl}
-        alt={article.articleName}
+        alt={
+          article.articleImageUrl ? article.articleName : 'No image available'
+        }
         className={styles.articleImage}
       />
       <div className={styles.articleDetails}>
-        <p className={styles.articleText}>
-          <strong>{article.articleName}</strong> ({article.articleNo})
+        <h2 className={styles.articleName}>{article.articleName}</h2>
+        <p className={styles.articleNumber}>
+          Article Number: {article.articleNo}
         </p>
-        <strong className={styles.articleText}>
-          ${article.price.toFixed(2)}
-        </strong>
-        <p className={styles.articleText}>Qty: {article.quantity}</p>
+        <p className={styles.articlePrice}>
+          <strong>${article.price.toFixed(2)}</strong>
+        </p>
+        <p className={styles.articleQuantity}>Quantity: {article.quantity}</p>
       </div>
-    </div>
+    </article>
   );
 };

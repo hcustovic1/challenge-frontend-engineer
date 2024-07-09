@@ -34,7 +34,9 @@ describe('fetchOrder', () => {
         orderNumber: '1',
         zipCode: '60156',
       })
-    ).rejects.toThrow('Failed to fetch the requested order!');
+    ).rejects.toThrow(
+      'Order not found. Please check the order number and zip code and try again.'
+    );
   });
 
   it('uses the VITE_ORDERS_API_BASE_URL environment variable if available', async () => {
