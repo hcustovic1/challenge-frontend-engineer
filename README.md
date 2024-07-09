@@ -106,8 +106,7 @@ yarn dev
 Thank you for journeying with me through my solution to the parcelLab Frontend Engineer Quest. This quest has been a testament to my skills and dedication to creating outstanding user experiences. If you have any questions or feedback, feel free to send a raven!
 
 <p align="center">
-<img src="https://awoiaf.westeros.org/images/thumb/8/87/Aleksander-karcz-exchange-of-information.jpg/350px-Aleksander-karcz-exchange-of-information.jpg
-" alt="raven" width="500"/>
+<img src="https://awoiaf.westeros.org/images/thumb/8/87/Aleksander-karcz-exchange-of-information.jpg/350px-Aleksander-karcz-exchange-of-information.jpg" alt="raven" width="500"/>
 </p>
 
 May your code be bug-free and your tests always pass!
