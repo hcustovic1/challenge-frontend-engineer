@@ -1,0 +1,31 @@
+.orderDetails {
+    padding: 20px;
+  }
+  
+  .orderDetails h1,
+  .orderDetails h2 {
+    margin-bottom: 10px;
+  }
+  
+  .orderDetails section {
+    margin-bottom: 20px;
+  }
+  
+  .article img {
+    max-width: 100px;
+    margin-right: 10px;
+  }
+  
+  .article {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .checkpoint {
+    margin-bottom: 10px;
+  }
+  
+  .checkpoint p {
+    margin: 5px 0;
+  }

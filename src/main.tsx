@@ -12,6 +12,7 @@ async function prepare() {
   }
 }
 
+// Ensure that mock service worker is active before rendering the app
 prepare().then(() => {
   import('./App').then(({ default: App }) => {
     ReactDOM.createRoot(document.getElementById('root')!).render(

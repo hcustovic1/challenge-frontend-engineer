@@ -1,19 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './TrackOrderInputPage.module.css';
+import { useFetchOrder } from '../../hooks/useFetchOrder';
 import { TrackOrderInputForm } from '../../components';
+import { useOrderContext } from '../../context/OrderContext';
 
 export const TrackOrderInputPage: React.FC = () => {
-  const submitFormTEST = (orderNumber: string, zipCode: string) => {
-    alert(`Order number: ${orderNumber}, Zip code: ${zipCode}`);
-  };
+  const { fetchOrderData, order, isLoading, error } = useFetchOrder();
+  const { setOrder: setOrderContext, order: contextOrder } = useOrderContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (order) {
+      setOrderContext(order);
+    }
+  }, [order, setOrderContext]);
+
+  useEffect(() => {
+    if (contextOrder) {
+      navigate(`/order/${contextOrder._id}/${contextOrder.zip_code}`);
+    }
+  }, [contextOrder, navigate]);
 
   return (
-    <div className={styles.signIn}>
+    <div className={styles.trackOrderPage}>
       <TrackOrderInputForm
-        heading="Track Order"
-        description="Enter your order number and zip code combination to see the order details and shipping updates"
-        onSubmit={submitFormTEST}
+        heading="Track Your Order"
+        description="Please enter your order number and zip code to track your order."
+        onSubmit={fetchOrderData}
       />
+
+      {isLoading && <p>Loading...</p>}
+
+      {error && (
+        <p className={styles.error} role="alert">
+          {error}
+        </p>
+      )}
     </div>
   );
 };

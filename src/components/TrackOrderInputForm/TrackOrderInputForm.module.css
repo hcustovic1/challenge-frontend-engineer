@@ -1,0 +1,73 @@
+.signIn {
+    background-color: var(--color-surface);
+    padding: var(--spacing-lg);
+    border-radius: var(--spacing-sm);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: var(--spacing-lg) auto;
+  }
+  
+  h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-on-surface);
+  }
+  
+  p {
+    font-size: var(--font-size-md);
+    color: var(--color-on-surface);
+  }
+  
+  .inputGroup {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  label {
+    display: block;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-on-surface);
+  }
+  
+  input {
+    width: 100%;
+    padding: var(--input-padding);
+    font-size: var(--input-font-size);
+    border: 1px solid var(--color-on-surface);
+    border-radius: var(--input-border-radius);
+    box-sizing: border-box;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: var(--button-padding);
+    font-size: var(--button-font-size);
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border: none;
+    border-radius: var(--button-border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: var(--color-primary-variant);
+  }
+  
+  .error {
+    color: var(--color-error);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-sm);
+  }
+  
+  .srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
