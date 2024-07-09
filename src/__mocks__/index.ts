@@ -29,7 +29,7 @@ export const mockOrder: Order = {
     ],
     orderNo: '0000RTAB1',
     order_date: '2023-01-01',
-    recipient: 'Ollie Wright',
+    recipient: 'Snoop Dogg',
     recipient_notification: 'Ollie',
     email: 'oliver.wright@parcellab.com',
     street: '14 Buck Way',

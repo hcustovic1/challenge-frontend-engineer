@@ -1,8 +1,6 @@
-import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { useOrderContext } from '../../context/OrderContext';
+import { useParams } from 'react-router-dom';
+import { useManageOrderData } from '../../hooks';
 import styles from './OrderDetailsPage.module.css';
-import { useFetchOrder } from '../../hooks';
 import {
   Articles,
   Checkpoints,
@@ -17,28 +15,8 @@ export const OrderDetailsPage: React.FC = () => {
     orderNumber: string;
     zipCode: string;
   }>();
-  const { order: contextOrder, setOrder: setContextOrder } = useOrderContext();
-  const {
-    fetchOrderData,
-    fetchedOrder,
-    isLoadingOrderData,
-    fetchOrderDataError,
-  } = useFetchOrder();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!orderNumber || !zipCode) {
-      navigate('/');
-    } else if (!contextOrder) {
-      fetchOrderData(orderNumber, zipCode);
-    }
-  }, [orderNumber, zipCode, fetchOrderData, contextOrder, navigate]);
-
-  useEffect(() => {
-    if (fetchedOrder && !contextOrder) {
-      setContextOrder(fetchedOrder);
-    }
-  }, [fetchedOrder, contextOrder, setContextOrder]);
+  const { isLoadingOrderData, fetchOrderDataError, contextOrder } =
+    useManageOrderData(orderNumber!, zipCode!);
 
   if (isLoadingOrderData) {
     return <Loading />;

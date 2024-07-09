@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import styles from './TrackOrderInputPage.module.css';
 import {
-  useFetchOrder,
+  useFetchOrderFromAPI,
   useResetError,
   useNavigateAfterOrderFetch,
 } from '../../hooks';
@@ -14,7 +14,7 @@ export const TrackOrderInputPage: React.FC = () => {
     isLoadingOrderData,
     fetchOrderDataError,
     setFetchOrderDataError,
-  } = useFetchOrder();
+  } = useFetchOrderFromAPI();
 
   useNavigateAfterOrderFetch(fetchedOrder);
 

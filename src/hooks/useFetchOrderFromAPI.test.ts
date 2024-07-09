@@ -1,16 +1,16 @@
 import { describe, it, expect, vi, Mock } from 'vitest';
-import { useFetchOrder } from './useFetchOrder';
+import { useFetchOrderFromAPI } from './useFetchOrderFromAPI';
 import { fetchOrder } from '../api/fetchOrder';
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { mockOrder } from '../__mocks__';
 
 vi.mock('../api/fetchOrder');
 
-describe('useFetchOrder', () => {
+describe('useFetchOrderFromAPI', () => {
   it('fetches order data successfully', async () => {
     (fetchOrder as Mock).mockResolvedValue(mockOrder);
 
-    const { result } = renderHook(() => useFetchOrder());
+    const { result } = renderHook(() => useFetchOrderFromAPI());
 
     act(() => {
       result.current.fetchOrderData('1', '60156');
@@ -31,7 +31,7 @@ describe('useFetchOrder', () => {
     const mockError = new Error('Failed to fetch order');
     (fetchOrder as Mock).mockRejectedValue(mockError);
 
-    const { result } = renderHook(() => useFetchOrder());
+    const { result } = renderHook(() => useFetchOrderFromAPI());
 
     act(() => {
       result.current.fetchOrderData('1', '60156');
@@ -49,7 +49,7 @@ describe('useFetchOrder', () => {
   });
 
   it('allows setting fetch order data error manually', () => {
-    const { result } = renderHook(() => useFetchOrder());
+    const { result } = renderHook(() => useFetchOrderFromAPI());
 
     act(() => {
       result.current.setFetchOrderDataError('Custom error message');

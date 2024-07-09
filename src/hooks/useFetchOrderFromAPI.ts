@@ -10,7 +10,7 @@ interface UseFetchOrderReturn {
   setFetchOrderDataError: (error: string | null) => void;
 }
 
-export const useFetchOrder = (): UseFetchOrderReturn => {
+export const useFetchOrderFromAPI = (): UseFetchOrderReturn => {
   const [order, setOrder] = useState<Order | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
