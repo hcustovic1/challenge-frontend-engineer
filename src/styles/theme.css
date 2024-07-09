@@ -4,7 +4,9 @@
     --color-primary: #6200ea;
     --color-primary-variant: #3700b3;
     --color-secondary: #03dac6;
-    --color-error: #b00020;
+    --color-error-bg: #fddede;
+    --color-error-text: #b00020;
+    --color-error-border: #fcb3b3;
     --color-on-primary: #ffffff;
     --color-on-secondary: #000000;
     --color-on-background: #000000;

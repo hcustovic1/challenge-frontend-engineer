@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useOrderContext } from '../../context/OrderContext';
 import styles from './OrderDetailsPage.module.css';

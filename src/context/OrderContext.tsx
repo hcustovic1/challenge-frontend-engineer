@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode, useContext } from 'react';
+import { createContext, useState, ReactNode, useContext } from 'react';
 import { Order } from '../types';
 
 interface OrderContextProps {
